@@ -48,7 +48,7 @@ struct HomeView: View {
                 } else {
                      
                     List {
-                        ForEach(viewModel.todoViewModel.reversed()) { items in
+                        ForEach(viewModel.todoViewModel.sorted{ $0.timeStamp > $1.timeStamp }) { items in
                             
                             NavigationLink {
                                 InputView(viewModel: viewModel,
@@ -72,6 +72,7 @@ struct HomeView: View {
             }
             .onAppear {
                 viewModel.ReadData()
+                
             }
             .navigationTitle("Todo List")
             .navigationBarTitleDisplayMode(.inline)

@@ -20,13 +20,6 @@ class TodoViewModel: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "TODOLIST") {
             let read = try? JSONDecoder().decode([TodoModel].self, from: data)
             self.todoViewModel = read!
-            
-            if todoViewModel.count != 0 {
-                self.todoViewModel.sort {
-                    $0.timeStamp < $1.timeStamp
-                }
-            }
-        }
     }
     
     //MARK: Save.....
